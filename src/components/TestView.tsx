@@ -226,21 +226,18 @@ export const TestView: React.FC<TestViewProps> = ({ sectionTitle, questions, onB
         </button>
 
         {/* Back Button for the Last Question */}
-        {selectedAnswers[currentQuestionData.id] !== undefined && (
         <>
           {/* Previous Question Button */}
           {currentQuestion > 0 && (
             <button
               onClick={() => setCurrentQuestion(prev => prev - 1)}
-              className="px-6 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors"
+              className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors"
             >
               {language === 'en' ? 'Previous Question' : 'السؤال السابق'}
             </button>
           )}
         </>
-      )}
         
-        {selectedAnswers[currentQuestionData.id] !== undefined && (
           <button
             onClick={() => {
               if (isLastQuestion) {
@@ -249,13 +246,12 @@ export const TestView: React.FC<TestViewProps> = ({ sectionTitle, questions, onB
                 setCurrentQuestion(prev => prev + 1);
               }
             }}
-            className="px-6 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors"
+            className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors"
           >
             {isLastQuestion 
               ? (language === 'en' ? 'Finish Test' : 'إنهاء الاختبار')
               : (language === 'en' ? 'Next Question' : 'السؤال التالي')}
           </button>
-        )}
       </div>
     </div>
   );
