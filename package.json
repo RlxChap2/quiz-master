@@ -1,7 +1,7 @@
 {
   "name": "quiz-master",
   "private": true,
-  "version": "1.0.2",
+  "version": "1.1.0",
   "type": "module",
   "author": {
     "name": "RlxChap2 - Mohammed Mahmoud"
@@ -10,7 +10,9 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "push": "git add . && git commit -m \"V1.1.0\" && git push",
+        "changelog": "git log --pretty=format:\"1. [**%s - `%h`**](https://github.com/RlxChap2/quiz-master/commit/%H)\" > CHANGELOG.md"
   },
   "dependencies": {
     "katex": "^0.16.9",
