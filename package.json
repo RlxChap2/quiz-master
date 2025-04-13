@@ -1,7 +1,7 @@
 {
     "name": "quiz-master",
     "private": true,
-    "version": "1.2.0",
+    "version": "1.2.1",
     "type": "module",
     "author": {
         "name": "RlxChap2 - Mohammed Mahmoud"
@@ -11,7 +11,7 @@
         "build": "vite build",
         "lint": "eslint .",
         "preview": "vite preview",
-        "push": "git add . && git commit -m \"V1.2.0\" && git push",
+        "push": "git add . && git commit -m \"V1.2.1 New Easter Eggs\" && git push",
         "changelog": "git log --pretty=format:\"1. [**%s - `%h`**](https://github.com/RlxChap2/quiz-master/commit/%H)\" > CHANGELOG.md"
     },
     "dependencies": {

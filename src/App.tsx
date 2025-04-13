@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Navbar } from './components/Navbar';
 import { TestView } from './components/TestView';
 import { LectureSelector } from './components/LectureSelector';
@@ -14,6 +14,26 @@ function App() {
     const [selectedLecture, setSelectedLecture] = useState<Lecture | null>(null);
     const [activePage, setActivePage] = useState<ActivePage>('home');
     const [showEasterEgg, setShowEasterEgg] = useState(false);
+
+    const [showArrowEasterEgg, setShowArrowEasterEgg] = useState(false);
+    const [, setInputSequence] = useState<string[]>([]);
+
+    const secretCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown'];
+
+    useEffect(() => {
+        const handleKeyDown = (e: KeyboardEvent) => {
+            setInputSequence((prev) => {
+                const newSequence = [...prev, e.key].slice(-secretCode.length);
+                if (JSON.stringify(newSequence) === JSON.stringify(secretCode)) {
+                    setShowArrowEasterEgg(true);
+                }
+                return newSequence;
+            });
+        };
+
+        window.addEventListener('keydown', handleKeyDown);
+        return () => window.removeEventListener('keydown', handleKeyDown);
+    }, []);
 
     const toggleTheme = () => {
         setIsDark(!isDark);
@@ -89,7 +109,10 @@ function App() {
             <div className="min-h-screen pt-20 p-6 bg-gray-50 dark:bg-gray-900">
                 <div className="max-w-7xl mx-auto">{renderContent()}</div>
             </div>
-            <EasterEgg show={showEasterEgg} onClose={() => setShowEasterEgg(false)} />
+
+            {/* Easter Eggs */}
+            <EasterEgg show={showEasterEgg} onClose={() => setShowEasterEgg(false)} videoSrc="./easteregg.mp4" />
+            <EasterEgg show={showArrowEasterEgg} onClose={() => setShowArrowEasterEgg(false)} videoSrc="./easteregg2.mp4" />
         </>
     );
 }
